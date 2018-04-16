@@ -1,24 +1,23 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
-public class Game extends JFrame implements KeyListener {
+public class GameBoi extends JFrame implements KeyListener {
 
     //Instances
-    Board board;
+    BoardBoi boardBoi;
 
     //Variables
     boolean upPressed, downPressed, leftPressed, rightPressed, spacePressed;
 
     //Constructor
-    public Game(){
+    public GameBoi(){
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
         setResizable(false);
         setFocusable(true);
         setTitle("FINAL PROJECT");
-        board = new Board();
-        add(board);
+        boardBoi = new BoardBoi();
+        add(boardBoi);
         pack();
         setLocationRelativeTo(null);
         addKeyListener(this);
@@ -26,7 +25,7 @@ public class Game extends JFrame implements KeyListener {
 
     //MAIN METHOD
     public static void main(String[] args){
-        new Game();
+        new GameBoi();
     }
 
     //Implemented Methods
@@ -120,12 +119,12 @@ public class Game extends JFrame implements KeyListener {
         this.spacePressed = spacePressed;
     }
 
-    //board
-    public Board getBoard() {
-        return board;
+    //boardBoi
+    public BoardBoi getBoardBoi() {
+        return boardBoi;
     }
 
-    public void setBoard(Board board) {
-        this.board = board;
+    public void setBoardBoi(BoardBoi boardBoi) {
+        this.boardBoi = boardBoi;
     }
 }
