@@ -3,13 +3,13 @@ import java.awt.event.*;
 
 public class GameBoi extends JFrame implements KeyListener {
 
-    //Instances
+    //OBJECTS
     BoardBoi boardBoi;
 
-    //Variables
+    //VARIABLES
     boolean upPressed, downPressed, leftPressed, rightPressed, spacePressed;
 
-    //Constructor
+    //CONSTRUCTOR
     public GameBoi(){
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
@@ -28,7 +28,7 @@ public class GameBoi extends JFrame implements KeyListener {
         new GameBoi();
     }
 
-    //Implemented Methods
+    //IMPLEMENTED
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_UP){
@@ -72,9 +72,7 @@ public class GameBoi extends JFrame implements KeyListener {
 
     }
 
-    //Getters/Setters
-
-    //rightPressed
+    //GETTERS/SETTERS
     public boolean isRightPressed() {
         return rightPressed;
     }
@@ -83,7 +81,7 @@ public class GameBoi extends JFrame implements KeyListener {
         this.rightPressed = rightPressed;
     }
 
-    //leftPressed
+    
     public boolean isLeftPressed() {
         return leftPressed;
     }
@@ -92,7 +90,7 @@ public class GameBoi extends JFrame implements KeyListener {
         this.leftPressed = leftPressed;
     }
 
-    //downPressed
+    
     public boolean isDownPressed() {
         return downPressed;
     }
@@ -101,7 +99,7 @@ public class GameBoi extends JFrame implements KeyListener {
         this.downPressed = downPressed;
     }
 
-    //upPressed
+    
     public boolean isUpPressed() {
         return upPressed;
     }
@@ -110,7 +108,7 @@ public class GameBoi extends JFrame implements KeyListener {
         this.upPressed = upPressed;
     }
 
-    //spacePressed
+    
     public boolean isSpacePressed() {
         return spacePressed;
     }
@@ -119,7 +117,7 @@ public class GameBoi extends JFrame implements KeyListener {
         this.spacePressed = spacePressed;
     }
 
-    //boardBoi
+    
     public BoardBoi getBoardBoi() {
         return boardBoi;
     }
