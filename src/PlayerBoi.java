@@ -56,15 +56,15 @@ public class PlayerBoi extends SpriteBoi {
             this.luck = 16;
         }
         if(element.equals("sturdy")){
-            this.hp = 75;
+            this.hp = 70;
             this.atk = 25;
-            this.spd = 5;
+            this.spd = 10;
             this.def = 15;
             this.luck = 0;
         }
         if(element.equals("archer")){
             this.hp = 55;
-            this.atk = 15;
+            this.atk = 20;
             this.spd = 20;
             this.def = 10;
             this.luck = 2;
