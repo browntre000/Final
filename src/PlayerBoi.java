@@ -2,12 +2,16 @@ import java.awt.*;
 
 public class PlayerBoi extends SpriteBoi {
 
-    String color, element;
-    int x, y, xSize;
+    //OBJECTS
     GameBoi gameBoi;
     BoardBoi boardBoi;
+    
+    //VARIABLES
+    String color, element;
+    int x, y, xSize;
     int hp, atk, spd, def, luck;
 
+    //CONSTRUCTOR
     public PlayerBoi(GameBoi gameBoi, BoardBoi boardBoi){
         super();
         this.color = this.getColor();
@@ -19,7 +23,8 @@ public class PlayerBoi extends SpriteBoi {
         this.BoardBoi = boardBoi;
     }
 
-    public void setup(){
+    //METHODS
+    public void setupStats(){
         if(element.equals("spark")){
             this.hp = 50;
             this.atk = 12;
@@ -142,14 +147,23 @@ public class PlayerBoi extends SpriteBoi {
                 x += spd;
             }
         }
-        if(x <= (xSize/2))
+        if(x <= (xSize/2)){
             x = boardBoi.getLength() - (xSize/2);
-        if(x >= boardBoi.getLength() - (xSize/2))
+        }
+        if(x >= boardBoi.getLength() - (xSize/2)){
             x = xSize/2;
-        if(y >= boardBoi.getHeight() - (xSize/2))
+        }
+        if(y >= boardBoi.getHeight() - (xSize/2)){
             y = boardBoi.getHeight() - (xSize/2);
-        if(y <= (xSize/2))
+        }
+        if(y <= (xSize/2)){
             y = xSize/2;
+        }
     }
-
+           
+    //GETTERS/SETTERS
+    public String getColor(){
+        return this.color;
+    }
+    
 }
