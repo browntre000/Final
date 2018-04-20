@@ -1,2 +1,13 @@
-public class BossBoi {
+public class BossBoi extends SpriteBoi {
+  
+  //OBJECTS
+
+  //VARIABLES
+  
+  //CONSTRUCTOR
+  
+  //METHODS
+  
+  //GETTERS/SETTERS
+  
 }
