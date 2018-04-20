@@ -5,20 +5,20 @@ import java.awt.event.ActionListener;
 
 public class BoardBoi extends JPanel implements ActionListener {
 
-    //Instances
+    //OBJECTS
 
-    //Variables
+    //VARIABLES
 
-    //Constructor
+    //CONSTRUCTORS
 
-    //Implemented Methods
+    //IMPLEMENTED METHODS
     public void actionPerformed(ActionEvent e){
 
     }
 
 
-    //Methods
+    //METHODS
 
-    //Getters/Setters
+    //GETTERS/SETTERS
 
 }
