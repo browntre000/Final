@@ -16,7 +16,7 @@ public class GameBoi extends JFrame implements KeyListener {
         setResizable(false);
         setFocusable(true);
         setTitle("FINAL PROJECT");
-        boardBoi = new BoardBoi();
+        boardBoi = new BoardBoi(this);
         add(boardBoi);
         pack();
         setLocationRelativeTo(null);
