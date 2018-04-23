@@ -114,6 +114,7 @@ public class PlayerBoi extends SpriteBoi {
     }
 
     public void paint(Graphics g){
+        g.setColor(setColor());
         g.fillRect(x, y, xSize, xSize);
     }
 
@@ -143,7 +144,7 @@ public class PlayerBoi extends SpriteBoi {
         if(x <= -xSize/2 && gameBoi.isLeftPressed()){
             x = boardBoi.getWidth() - (xSize/2);
         }
-        if(x >= boardBoi.getWidth() - (xSize/2) && gameBoi.rightPressed){
+        if(x >= boardBoi.getWidth() && gameBoi.rightPressed){
             x = -xSize/2;
         }
         if(y >= boardBoi.getHeight() - xSize){
@@ -155,24 +156,6 @@ public class PlayerBoi extends SpriteBoi {
     }
            
     //GETTERS/SETTERS
-    public String getColor(){
-        return this.color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    @Override
-    public String getElement() {
-        return element;
-    }
-
-    @Override
-    public void setElement(String element) {
-        this.element = element;
-    }
-
     public int getY() {
         return y;
     }

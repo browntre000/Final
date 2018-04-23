@@ -11,7 +11,7 @@ public class SpriteBoi {
 
     //CONSTRUCTOR
     public SpriteBoi(){
-        this.elementType = 7;
+        this.elementType = random.nextInt(8);
         if(elementType == 0){
             this.element = "spark";
             this.color = "green";
@@ -47,6 +47,7 @@ public class SpriteBoi {
     }
 
     //METHODS... no?
+
 
     //GETTERS / SETTERS
 
