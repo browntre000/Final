@@ -142,7 +142,7 @@ public class PlayerBoi extends SpriteBoi {
             }
         }
         if(x <= -xSize/2 && gameBoi.isLeftPressed()){
-            x = boardBoi.getWidth() - (xSize/2);
+            x = boardBoi.getWidth();
         }
         if(x >= boardBoi.getWidth() && gameBoi.rightPressed){
             x = -xSize/2;

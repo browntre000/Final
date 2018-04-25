@@ -21,8 +21,8 @@ public class BulletBoi extends SpriteBoi {
   
     //METHODS
     public void setupStats(PlayerBoi playerBoi){
-        this.x = playerBoi.getX();
-        this.y = playerBoi.getY();
+        this.x = playerBoi.getX() + 15;
+        this.y = playerBoi.getY() + 15;
         this.xSize = 20;
         this.color = playerBoi.getColor();
         this.element = playerBoi.getElement();

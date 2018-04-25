@@ -29,7 +29,7 @@ public class SpriteBoi {
             this.color = "light blue";
         }
         if(elementType == 4){
-            this.element = "speed";
+            this.element = "speedy";
             this.color = "orange";
         }
         if(elementType == 5){
