@@ -1,10 +1,13 @@
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlayerBoi extends SpriteBoi {
 
     //OBJECTS
     GameBoi gameBoi;
     BoardBoi boardBoi;
+    List<BulletBoi> bullets;
     
     //VARIABLES
     String color, element;
@@ -16,6 +19,7 @@ public class PlayerBoi extends SpriteBoi {
         super();
         this.color = super.getColor();
         this.element = super.getElement();
+        this.bullets = new ArrayList<>();
         this.x = 275;
         this.y = 700;
         this.xSize = 50;
@@ -116,6 +120,9 @@ public class PlayerBoi extends SpriteBoi {
     public void paint(Graphics g){
         g.setColor(setColor());
         g.fillRect(x, y, xSize, xSize);
+        for(BulletBoi b: bullets){
+            b.paint(g);
+        }
     }
 
     public void move(){
@@ -152,6 +159,13 @@ public class PlayerBoi extends SpriteBoi {
         }
         if(y <= 0){
             y = 0;
+        }
+
+        if(gameBoi.isSpacePressed()){
+            bullets.add(new BulletBoi(gameBoi, boardBoi, this));
+        }
+        for(BulletBoi b: bullets){
+            b.move(this.x, this.y);
         }
     }
            

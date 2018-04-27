@@ -11,7 +11,6 @@ public class BoardBoi extends JPanel implements ActionListener {
     Timer timer;
     PlayerBoi playerBoi;
     GameBoi gameBoi;
-    List<BulletBoi> bullets = new ArrayList<BulletBoi>();
 
     //VARIABLES
     long currentTime = System.currentTimeMillis();
@@ -33,16 +32,7 @@ public class BoardBoi extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e){
         playerBoi.move();
-        if(gameBoi.isSpacePressed()){
-            long newTime = System.currentTimeMillis();
-            if(currentTime - newTime >= 3000) {
-                bullets.add(new BulletBoi(gameBoi, this, playerBoi));
-                currentTime = newTime;
-            }
-        }
-        for(BulletBoi b: bullets){
-            b.move();
-        }
+
         repaint();
     }
 
@@ -51,12 +41,6 @@ public class BoardBoi extends JPanel implements ActionListener {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         playerBoi.paint(g);
-        for(BulletBoi b: bullets){
-            long newTime = System.currentTimeMillis();
-            if(currentTime - newTime >= 3000) {
-                b.paint(g);
-            }
-        }
     }
 
 

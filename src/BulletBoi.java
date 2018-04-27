@@ -21,8 +21,8 @@ public class BulletBoi extends SpriteBoi {
   
     //METHODS
     public void setupStats(PlayerBoi playerBoi){
-        this.x = playerBoi.getX() + 15;
-        this.y = playerBoi.getY() + 15;
+        this.x = playerBoi.getX() + 25;
+        this.y = playerBoi.getY() + 25;
         this.xSize = 20;
         this.color = playerBoi.getColor();
         this.element = playerBoi.getElement();
@@ -64,16 +64,20 @@ public class BulletBoi extends SpriteBoi {
 
     public void paint(Graphics g){
         g.setColor(setColor());
-        g.fillOval(x, y, xSize, xSize);
+        g.fillOval(x - xSize/2, y - xSize/2, xSize, xSize);
     }
 
-    public void move(){
-        y -= 10;
-        if(y <= -xSize){
-            this.x = 300000;
-            this.y = 300000;
-            y += 0;
-        }
+    public void move(double angle){
+        angle *= (Math.PI / 180.00);
+        double yANGLE = Math.sin(angle)*10;
+        double xANGLE = Math.cos(angle)*10;
+
+        x+=xANGLE;
+        y-=yANGLE;
+    }
+
+    public void move(int x, int y){
+        
     }
   
     //GETTERS/SETTERS
