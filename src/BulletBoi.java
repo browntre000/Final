@@ -77,7 +77,11 @@ public class BulletBoi extends SpriteBoi {
     }
 
     public void move(int x, int y){
-        
+
+    }
+
+    public void collideWithObstacle(ObstacleBoi ob){
+        if()
     }
   
     //GETTERS/SETTERS

@@ -9,20 +9,29 @@ public class ObstacleBoi extends SpriteBoi {
     GameBoi gameBoi;
     BoardBoi boardBoi;
     PlayerBoi playerBoi;
+    List<Integer> yBounds;
+    List<Integer> xBounds;
 
     //VARIABLES
     int x, y, xSize;
     String color, element;
-    int def, atk;
+    int def, atk, hp;
+    boolean isCopiable;
 
     //CONSTRUCTOR
-    public ObstacleBoi(GameBoi gb, BoardBoi bb, int x, int y){
+    public ObstacleBoi(GameBoi gb, BoardBoi bb, int x, int y, int hp){
         super();
         this.xSize = 600/5;
         this.x = x;
         this.y = y;
+        this.hp = hp;
+        this.xBounds = new ArrayList<>();
+        this.yBounds = new ArrayList<>();
+        this.color = super.getColor();
+        this.element = super.getElement();
         this.gameBoi = gb;
         this.boardBoi = bb;
+        this.isCopiable = random.nextBoolean();
         bullets = new ArrayList<>();
     }
 
@@ -58,11 +67,36 @@ public class ObstacleBoi extends SpriteBoi {
     }
     public void paint(Graphics g){
         g.setColor(setColor());
-        g.fillRect(x - xSize/2 , y - xSize/2, xSize, xSize);
+        if(isCopiable){
+            g.fillOval(x - xSize/2 , y - xSize/2, xSize, xSize);
+        }
+        else{
+            g.fillRect(x - xSize/2 , y - xSize/2, xSize, xSize);
+        }
+    }
+
+    public void setBounds(List<Integer> xBounds) {
+        if(isCopiable){
+            for(int i = 0; i < xSize; i++){
+                Integer newBoi = new Integer((int)Math.sqrt(xSize*xSize - y*y));
+                if(i == 0){
+                    xBounds.add(newBoi);
+                }
+                else{
+                    Integer lastBoi = xBounds.get(i-1);
+                    if(!lastBoi.equals(newBoi)){
+                        xBounds.add(newBoi);
+                    }
+                }
+            }
+        }
+        else{
+            for(int i )
+        }
     }
 
     public void move(){
-        y += 10;
+        y += 5;
     }
 
     //GETTERS/SETTERS

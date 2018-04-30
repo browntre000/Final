@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -165,7 +166,7 @@ public class PlayerBoi extends SpriteBoi {
             bullets.add(new BulletBoi(gameBoi, boardBoi, this));
         }
         for(BulletBoi b: bullets){
-            b.move(this.x, this.y);
+            b.move(90);
         }
     }
            

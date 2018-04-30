@@ -11,6 +11,7 @@ public class BoardBoi extends JPanel implements ActionListener {
     Timer timer;
     PlayerBoi playerBoi;
     GameBoi gameBoi;
+    GameBoardBoi gameBoardBoi;
 
     //VARIABLES
     long currentTime = System.currentTimeMillis();
@@ -24,15 +25,14 @@ public class BoardBoi extends JPanel implements ActionListener {
         timer.start();
         playerBoi = new PlayerBoi(gameBoi, this);
         playerBoi.setupStats();
-
-
+        gameBoardBoi = new GameBoardBoi(gameBoi, this);
     }
 
     //IMPLEMENTED METHODS
     @Override
     public void actionPerformed(ActionEvent e){
         playerBoi.move();
-
+        gameBoardBoi.move();
         repaint();
     }
 
@@ -40,6 +40,7 @@ public class BoardBoi extends JPanel implements ActionListener {
     //METHODS
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+        gameBoardBoi.paint(g);
         playerBoi.paint(g);
     }
 
