@@ -81,7 +81,7 @@ public class BulletBoi extends SpriteBoi {
     }
 
     public void collideWithObstacle(ObstacleBoi ob){
-        if()
+
     }
   
     //GETTERS/SETTERS

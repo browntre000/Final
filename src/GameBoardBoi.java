@@ -23,6 +23,7 @@ public class GameBoardBoi extends SpriteBoi {
                 gameBoard[i][j] = new ObstacleBoi(gameBoi,boardBoi,j*(600/5)+(600/10), -i*600-50, random.nextInt(1000));
             }
         }
+        gameBoard[0][0].setBounds();
     }
 
     //METHODS
@@ -40,7 +41,7 @@ public class GameBoardBoi extends SpriteBoi {
     public void move(){
         for(ObstacleBoi[] ob: gameBoard){
             for(ObstacleBoi ob2: ob){
-                ob2.move();
+
             }
         }
     }
