@@ -79,8 +79,13 @@ public class ObstacleBoi extends SpriteBoi {
         }
     }
 
-    public void setBounds() {
-
+    public Shape setBounds() {
+        if(!isCopyable){
+            return new Rectangle(x, y, xSize, xSize);
+        }
+        else {
+            
+        }
     }
 
     public void move(){
