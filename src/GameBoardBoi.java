@@ -23,17 +23,16 @@ public class GameBoardBoi extends SpriteBoi {
                 gameBoard[i][j] = new ObstacleBoi(gameBoi,boardBoi,j*(600/5)+(600/10), -i*600-50, random.nextInt(1000));
             }
         }
-        gameBoard[0][0].setBounds();
     }
 
     //METHODS
 
     public void paint(Graphics g){
-        int i = 0;
-        int j = 0;
         for(ObstacleBoi[] ob: gameBoard){
             for(ObstacleBoi ob2: ob){
-                ob2.paint(g);
+                if (ob2 != null) {
+                    ob2.paint(g);
+                }
             }
         }
     }
@@ -41,11 +40,59 @@ public class GameBoardBoi extends SpriteBoi {
     public void move(){
         for(ObstacleBoi[] ob: gameBoard){
             for(ObstacleBoi ob2: ob){
+                if (ob2 != null) {
+                    ob2.move();
+                }
+            }
+        }
+    }
 
+    public boolean isInBounds(int y){
+        for(ObstacleBoi[] ob: gameBoard){
+            for(ObstacleBoi ob2: ob){
+                if (ob2 != null) {
+                    if (ob2.isInBounds(y)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public void collideWithBullet(BulletBoi bulletBoi){
+        for(ObstacleBoi[] ob: gameBoard){
+            for(ObstacleBoi ob2: ob){
+                if (ob2 != null) {
+                    ob2.collideWithBullet(bulletBoi);
+                }
+            }
+        }
+    }
+
+    public void checkDeaths(){
+        for(ObstacleBoi[] ob: gameBoard){
+            for(ObstacleBoi ob2: ob){
+                if (ob2 != null) {
+                    if(ob2.getHp()<=0){
+                        ob2 = null;
+                    }
+                }
             }
         }
     }
 
     //GETTERS/SETTERS
+
+    /*
+    I got tired of copying this
+    for(ObstacleBoi[] ob: gameBoard){
+        for(ObstacleBoi ob2: ob){
+            if (ob2 != null) {
+
+            }
+        }
+    }
+    */
 
 }

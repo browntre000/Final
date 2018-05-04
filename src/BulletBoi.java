@@ -5,6 +5,7 @@ public class BulletBoi extends SpriteBoi {
     //OBJECTS
     GameBoi gameBoi;
     BoardBoi boardBoi;
+    GameBoardBoi gameBoardBoi;
 
     //VARIABLES
     String color, element;
@@ -12,10 +13,11 @@ public class BulletBoi extends SpriteBoi {
     int atk, spd, def, luck;
   
     //CONSTRUCTOR
-    public BulletBoi(GameBoi gameBoi, BoardBoi boardBoi, PlayerBoi playerBoi){
+    public BulletBoi(GameBoi gameBoi, BoardBoi boardBoi, PlayerBoi playerBoi, GameBoardBoi gameBoardBoi){
         super();
         this.gameBoi = gameBoi;
         this.boardBoi = boardBoi;
+        this.gameBoardBoi = gameBoardBoi;
         setupStats(playerBoi);
     }
   
@@ -74,14 +76,20 @@ public class BulletBoi extends SpriteBoi {
 
         x+=xANGLE;
         y-=yANGLE;
+        System.out.print(gameBoardBoi.isInBounds(y-xSize/2));
     }
 
     public void move(int x, int y){
 
     }
 
-    public void collideWithObstacle(ObstacleBoi ob){
-
+    public boolean collideWithObstacle(){
+        if(gameBoardBoi.isInBounds(y+xSize/2)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
   
     //GETTERS/SETTERS

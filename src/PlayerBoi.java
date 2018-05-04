@@ -9,6 +9,7 @@ public class PlayerBoi extends SpriteBoi {
     GameBoi gameBoi;
     BoardBoi boardBoi;
     List<BulletBoi> bullets;
+    GameBoardBoi gameBoardBoi;
     
     //VARIABLES
     String color, element;
@@ -16,7 +17,7 @@ public class PlayerBoi extends SpriteBoi {
     int hp, atk, spd, def, luck;
 
     //CONSTRUCTOR
-    public PlayerBoi(GameBoi gameBoi, BoardBoi boardBoi){
+    public PlayerBoi(GameBoi gameBoi, BoardBoi boardBoi, GameBoardBoi gameBoardBoi){
         super();
         this.color = super.getColor();
         this.element = super.getElement();
@@ -26,6 +27,8 @@ public class PlayerBoi extends SpriteBoi {
         this.xSize = 50;
         this.gameBoi = gameBoi;
         this.boardBoi = boardBoi;
+        this.gameBoardBoi = gameBoardBoi;
+        setupStats();
     }
 
     //METHODS
@@ -163,11 +166,15 @@ public class PlayerBoi extends SpriteBoi {
         }
 
         if(gameBoi.isSpacePressed()){
-            bullets.add(new BulletBoi(gameBoi, boardBoi, this));
+            bullets.add(new BulletBoi(gameBoi, boardBoi, this, gameBoardBoi));
         }
         for(BulletBoi b: bullets){
             b.move(90);
+            b.collideWithObstacle();
+            gameBoardBoi.collideWithBullet(b);
         }
+
+
     }
            
     //GETTERS/SETTERS

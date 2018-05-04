@@ -23,9 +23,9 @@ public class BoardBoi extends JPanel implements ActionListener {
         this.gameBoi = gameBoi;
         timer = new Timer(1000/60, this);
         timer.start();
-        playerBoi = new PlayerBoi(gameBoi, this);
-        playerBoi.setupStats();
         gameBoardBoi = new GameBoardBoi(gameBoi, this);
+        playerBoi = new PlayerBoi(gameBoi, this, gameBoardBoi);
+
     }
 
     //IMPLEMENTED METHODS
@@ -33,6 +33,7 @@ public class BoardBoi extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e){
         playerBoi.move();
         gameBoardBoi.move();
+        gameBoardBoi.checkDeaths();
         repaint();
     }
 

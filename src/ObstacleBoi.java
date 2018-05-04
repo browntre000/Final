@@ -11,8 +11,6 @@ public class ObstacleBoi extends SpriteBoi {
     GameBoi gameBoi;
     BoardBoi boardBoi;
     PlayerBoi playerBoi;
-    List<Integer> yBounds;
-    List<Integer> xBounds;
 
     //VARIABLES
     int x, y, xSize;
@@ -27,16 +25,12 @@ public class ObstacleBoi extends SpriteBoi {
         this.x = x;
         this.y = y;
         this.hp = hp;
-        this.xBounds = new ArrayList<>();
-        this.yBounds = new ArrayList<>();
         this.color = super.getColor();
         this.element = super.getElement();
         this.gameBoi = gb;
         this.boardBoi = bb;
-        this.isCopyable = random.nextBoolean();
+        this.isCopyable = (random.nextInt(10) <= 1);
         bullets = new ArrayList<>();
-        xBounds.add(new Integer(x));
-        yBounds.add(new Integer(y));
     }
 
     //METHODS
@@ -79,12 +73,12 @@ public class ObstacleBoi extends SpriteBoi {
         }
     }
 
-    public Shape setBounds() {
-        if(!isCopyable){
-            return new Rectangle(x, y, xSize, xSize);
+    public boolean isInBounds(int y) {
+        if(y < this.y+xSize/2 && y > this.y-xSize/2){
+            return true;
         }
-        else {
-            
+        else{
+            return false;
         }
     }
 
@@ -92,6 +86,15 @@ public class ObstacleBoi extends SpriteBoi {
         y += 5;
     }
 
+    public void collideWithBullet(BulletBoi bb){
+        if(isInBounds(bb.getY()     )){
+            this.hp -= bb.getAtk();
+        }
+    }
+
     //GETTERS/SETTERS
-  
+
+    public int getHp() {
+        return hp;
+    }
 }
