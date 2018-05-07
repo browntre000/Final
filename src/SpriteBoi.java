@@ -86,6 +86,35 @@ public class SpriteBoi {
             this.elementType = 7;
         }
     }
+    public Color setColor(){
+        if(color.equals("red")){
+            return Color.red;
+        }
+        else if(color.equals("green")){
+            return Color.green;
+        }
+        else if(color.equals("blue")){
+            return Color.blue;
+        }
+        else if(color.equals("light blue")){
+            return new Color(0,191,255);
+        }
+        else if(color.equals("orange")){
+            return Color.ORANGE;
+        }
+        else if(color.equals("brown")){
+            return new Color(139,69,19);
+        }
+        else if(color.equals("gray")){
+            return new Color(105,105,105);
+        }
+        else if(color.equals("white")){
+            return Color.WHITE;
+        }
+        else{
+            return Color.magenta;
+        }
+    }
 
     public int getElementType() {
         return this.elementType;
@@ -97,5 +126,13 @@ public class SpriteBoi {
 
     public String getElement() {
         return this.element;
+    }
+    public boolean isInBounds(int y1, int y2, int xSize) {
+        if(y1 < y2+xSize/2 && y1 > y2-xSize/2){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

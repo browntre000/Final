@@ -8,7 +8,8 @@ public class BulletBoi extends SpriteBoi {
     GameBoardBoi gameBoardBoi;
 
     //VARIABLES
-    String color, element;
+    String colour, element;
+    Color color;
     int x, y, xSize;
     int atk, spd, def, luck;
   
@@ -26,7 +27,7 @@ public class BulletBoi extends SpriteBoi {
         this.x = playerBoi.getX() + 25;
         this.y = playerBoi.getY() + 25;
         this.xSize = 20;
-        this.color = playerBoi.getColor();
+        this.color = playerBoi.setColor();
         this.element = playerBoi.getElement();
         this.atk = playerBoi.getAtk();
         this.spd = playerBoi.getSpd();
@@ -34,38 +35,9 @@ public class BulletBoi extends SpriteBoi {
         this.luck = playerBoi.getLuck();
     }
 
-    public Color setColor(){
-        if(color.equals("red")){
-            return Color.red;
-        }
-        else if(color.equals("green")){
-            return Color.green;
-        }
-        else if(color.equals("blue")){
-            return Color.blue;
-        }
-        else if(color.equals("light blue")){
-            return new Color(0,191,255);
-        }
-        else if(color.equals("orange")){
-            return Color.ORANGE;
-        }
-        else if(color.equals("brown")){
-            return new Color(139,69,19);
-        }
-        else if(color.equals("gray")){
-            return new Color(105,105,105);
-        }
-        else if(color.equals("white")){
-            return Color.WHITE;
-        }
-        else{
-            return Color.magenta;
-        }
-    }
 
     public void paint(Graphics g){
-        g.setColor(setColor());
+        g.setColor(color);
         g.fillOval(x - xSize/2, y - xSize/2, xSize, xSize);
     }
 
@@ -76,20 +48,18 @@ public class BulletBoi extends SpriteBoi {
 
         x+=xANGLE;
         y-=yANGLE;
-        System.out.print(gameBoardBoi.isInBounds(y-xSize/2));
     }
 
     public void move(int x, int y){
 
     }
 
-    public boolean collideWithObstacle(){
-        if(gameBoardBoi.isInBounds(y+xSize/2)){
-            return true;
-        }
-        else{
-            return false;
-        }
+    public void collideWithObstacle(ObstacleBoi obstacleBoi){
+
+    }
+
+    public void collideWithBoss(BossBoi bossBoi){
+
     }
   
     //GETTERS/SETTERS

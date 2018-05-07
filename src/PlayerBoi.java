@@ -91,38 +91,9 @@ public class PlayerBoi extends SpriteBoi {
         }
     }
 
-    public Color setColor(){
-        if(color.equals("red")){
-            return Color.red;
-        }
-        else if(color.equals("green")){
-            return Color.green;
-        }
-        else if(color.equals("blue")){
-            return Color.blue;
-        }
-        else if(color.equals("light blue")){
-            return new Color(0,191,255);
-        }
-        else if(color.equals("orange")){
-            return Color.ORANGE;
-        }
-        else if(color.equals("brown")){
-            return new Color(139,69,19);
-        }
-        else if(color.equals("gray")){
-            return new Color(105,105,105);
-        }
-        else if(color.equals("white")){
-            return Color.WHITE;
-        }
-        else{
-            return Color.magenta;
-        }
-    }
 
     public void paint(Graphics g){
-        g.setColor(setColor());
+        g.setColor(super.setColor());
         g.fillRect(x, y, xSize, xSize);
         for(BulletBoi b: bullets){
             b.paint(g);
@@ -170,11 +141,16 @@ public class PlayerBoi extends SpriteBoi {
         }
         for(BulletBoi b: bullets){
             b.move(90);
-            b.collideWithObstacle();
-            gameBoardBoi.collideWithBullet(b);
         }
+    }
 
+    public void collideWithObstacle(ObstacleBoi obstacleBoi){
+        int leftX = obstacleBoi.getX() - obstacleBoi.getXSize()/2;
+        int rightX = obstacleBoi.getX() + obstacleBoi.getXSize()/2;
+        int topY = obstacleBoi.getY() - obstacleBoi.getXSize()/2;
+        int bottomY = obstacleBoi.getY() + obstacleBoi.getXSize()/2;
 
+        
     }
            
     //GETTERS/SETTERS

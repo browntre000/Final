@@ -34,35 +34,6 @@ public class ObstacleBoi extends SpriteBoi {
     }
 
     //METHODS
-    public Color setColor(){
-        if(color.equals("red")){
-            return Color.red;
-        }
-        else if(color.equals("green")){
-            return Color.green;
-        }
-        else if(color.equals("blue")){
-            return Color.blue;
-        }
-        else if(color.equals("light blue")){
-            return new Color(0,191,255);
-        }
-        else if(color.equals("orange")){
-            return Color.ORANGE;
-        }
-        else if(color.equals("brown")){
-            return new Color(139,69,19);
-        }
-        else if(color.equals("gray")){
-            return new Color(105,105,105);
-        }
-        else if(color.equals("white")){
-            return Color.WHITE;
-        }
-        else{
-            return Color.magenta;
-        }
-    }
     public void paint(Graphics g){
         g.setColor(setColor());
         if(isCopyable){
@@ -73,28 +44,34 @@ public class ObstacleBoi extends SpriteBoi {
         }
     }
 
-    public boolean isInBounds(int y) {
-        if(y < this.y+xSize/2 && y > this.y-xSize/2){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
 
     public void move(){
         y += 5;
     }
 
     public void collideWithBullet(BulletBoi bb){
-        if(isInBounds(bb.getY()     )){
-            this.hp -= bb.getAtk();
-        }
+
+    }
+
+    public void collideWithPlayer(PlayerBoi playerBoi){
+
     }
 
     //GETTERS/SETTERS
 
     public int getHp() {
         return hp;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY(){
+        return y;
+    }
+
+    public int getXSize() {
+        return xSize;
     }
 }

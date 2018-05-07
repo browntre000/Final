@@ -47,24 +47,22 @@ public class GameBoardBoi extends SpriteBoi {
         }
     }
 
-    public boolean isInBounds(int y){
-        for(ObstacleBoi[] ob: gameBoard){
-            for(ObstacleBoi ob2: ob){
-                if (ob2 != null) {
-                    if (ob2.isInBounds(y)) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
 
     public void collideWithBullet(BulletBoi bulletBoi){
         for(ObstacleBoi[] ob: gameBoard){
             for(ObstacleBoi ob2: ob){
                 if (ob2 != null) {
                     ob2.collideWithBullet(bulletBoi);
+                }
+            }
+        }
+    }
+
+    public void collideWithPlayer(PlayerBoi playerBoi){
+        for(ObstacleBoi[] ob: gameBoard){
+            for(ObstacleBoi ob2: ob){
+                if (ob2 != null) {
+                    ob2.collideWithPlayer(playerBoi);
                 }
             }
         }

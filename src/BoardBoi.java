@@ -45,6 +45,12 @@ public class BoardBoi extends JPanel implements ActionListener {
         playerBoi.paint(g);
     }
 
+    private void printSimpleString(String s, int width, int XPos, int YPos, Graphics g2d){
+        int stringLen = (int)g2d.getFontMetrics().getStringBounds(s, g2d).getWidth();
+        int start = width/2 - stringLen/2;
+        g2d.drawString(s, start + XPos, YPos);
+    }
+
 
 
 
