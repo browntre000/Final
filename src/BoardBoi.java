@@ -32,6 +32,11 @@ public class BoardBoi extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e){
         playerBoi.move();
+        for(int i = 0; i < gameBoardBoi.getLevels() * 15; i++){
+            for(int j = 0; j < 5; j++){
+                playerBoi.collideWithObstacle(gameBoardBoi.getObstacleBoi(i,j));
+            }
+        }
         gameBoardBoi.move();
         gameBoardBoi.checkDeaths();
         repaint();
@@ -43,12 +48,28 @@ public class BoardBoi extends JPanel implements ActionListener {
         super.paintComponent(g);
         gameBoardBoi.paint(g);
         playerBoi.paint(g);
+        paintingCriticallyImportantStrings(g);
     }
 
     private void printSimpleString(String s, int width, int XPos, int YPos, Graphics g2d){
+        g2d.setFont(new Font("Serif", 32, 32));
+        g2d.setColor(Color.black);
         int stringLen = (int)g2d.getFontMetrics().getStringBounds(s, g2d).getWidth();
         int start = width/2 - stringLen/2;
         g2d.drawString(s, start + XPos, YPos);
+    }
+
+    public void paintingCriticallyImportantStrings(Graphics g){
+        int[][] x = gameBoardBoi.getX();
+        int[][] y = gameBoardBoi.getY();
+        for(int i = 0; i < gameBoardBoi.getLevels() * 15; i++){
+            for(int j = 0; j < 5; j++){
+                printSimpleString(Integer.toString(gameBoardBoi.getObstacleBoi(i,j).getHp()), 125,
+                        gameBoardBoi.getObstacleBoi(i, j).getX() - 60,
+                        gameBoardBoi.getObstacleBoi(i, j).getY() + 8, g);
+            }
+        }
+        printSimpleString(Integer.toString(playerBoi.getHp()), 125, playerBoi.getX()-35, playerBoi.getY()+35, g);
     }
 
 

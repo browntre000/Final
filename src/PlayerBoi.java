@@ -149,8 +149,13 @@ public class PlayerBoi extends SpriteBoi {
         int rightX = obstacleBoi.getX() + obstacleBoi.getXSize()/2;
         int topY = obstacleBoi.getY() - obstacleBoi.getXSize()/2;
         int bottomY = obstacleBoi.getY() + obstacleBoi.getXSize()/2;
+        int i = 0;
 
-        
+        if(this.x >= leftX && this.x <= rightX && this.y >= topY && this.y <= bottomY){
+            this.hp -= obstacleBoi.getAtk();
+            i++;
+        }
+
     }
            
     //GETTERS/SETTERS

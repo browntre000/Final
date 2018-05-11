@@ -25,6 +25,7 @@ public class ObstacleBoi extends SpriteBoi {
         this.x = x;
         this.y = y;
         this.hp = hp;
+        this.atk = hp/50;
         this.color = super.getColor();
         this.element = super.getElement();
         this.gameBoi = gb;
@@ -73,5 +74,9 @@ public class ObstacleBoi extends SpriteBoi {
 
     public int getXSize() {
         return xSize;
+    }
+
+    public int getAtk(){
+        return this.atk;
     }
 }
