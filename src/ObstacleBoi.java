@@ -51,11 +51,28 @@ public class ObstacleBoi extends SpriteBoi {
     }
 
     public void collideWithBullet(BulletBoi bb){
+        int leftX = this.getX() - this.getXSize()/2;
+        int rightX = this.getX() + this.getXSize()/2;
+        int topY = this.getY() - this.getXSize()/2;
+        int bottomY = this.getY() + this.getXSize()/2;
 
+        if(bb.getX() >= leftX && bb.getX() <= rightX && bb.getY() >= topY && bb.getY() <= bottomY){
+            this.hp -= bb.getAtk();
+        }
     }
 
-    public void collideWithPlayer(PlayerBoi playerBoi){
+    public boolean collideWithPlayer(PlayerBoi playerBoi){
+        int leftX = this.getX() - this.getXSize()/2;
+        int rightX = this.getX() + this.getXSize()/2;
+        int topY = this.getY() - this.getXSize()/2;
+        int bottomY = this.getY() + this.getXSize()/2;
 
+        if(playerBoi.getX() >= leftX && playerBoi.getX() <= rightX && playerBoi.getY() >= topY && playerBoi.getY() <= bottomY){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     //GETTERS/SETTERS

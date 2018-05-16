@@ -65,10 +65,12 @@ public class GameBoardBoi extends SpriteBoi {
     }
 
     public void collideWithPlayer(PlayerBoi playerBoi){
-        for(ObstacleBoi[] ob: gameBoard){
-            for(ObstacleBoi ob2: ob){
-                if (ob2 != null) {
-                    ob2.collideWithPlayer(playerBoi);
+        for(int i = 0; i < gameBoard.length; i++){
+            for(int j = 0; j < gameBoard[0].length; j++){
+                if (gameBoard[i][j] != null) {
+                    if(gameBoard[i][j].collideWithPlayer(playerBoi)){
+                        gameBoard[i][j] = new ObstacleBoi(gameBoi, boardBoi, 10000, 10000 , 10000);
+                    }
                 }
             }
         }

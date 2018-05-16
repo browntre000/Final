@@ -54,8 +54,16 @@ public class BulletBoi extends SpriteBoi {
 
     }
 
-    public void collideWithObstacle(ObstacleBoi obstacleBoi){
+    public boolean collideWithObstacle(ObstacleBoi obstacleBoi){
+        int leftX = obstacleBoi.getX() - obstacleBoi.getXSize()/2;
+        int rightX = obstacleBoi.getX() + obstacleBoi.getXSize()/2;
+        int topY = obstacleBoi.getY() - obstacleBoi.getXSize()/2;
+        int bottomY = obstacleBoi.getY() + obstacleBoi.getXSize()/2;
 
+        if(this.x >= leftX && this.x <= rightX && this.y >= topY && this.y <= bottomY){
+            return true;
+        }
+        return false;
     }
 
     public void collideWithBoss(BossBoi bossBoi){

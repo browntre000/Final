@@ -141,6 +141,7 @@ public class PlayerBoi extends SpriteBoi {
         }
         for(BulletBoi b: bullets){
             b.move(90);
+            gameBoardBoi.collideWithBullet(b);
         }
     }
 
