@@ -75,6 +75,15 @@ public class ObstacleBoi extends SpriteBoi {
         }
     }
 
+    public boolean isDead(){
+        if(this.hp <= 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     //GETTERS/SETTERS
 
     public int getHp() {

@@ -146,17 +146,29 @@ public class PlayerBoi extends SpriteBoi {
     }
 
     public void collideWithObstacle(ObstacleBoi obstacleBoi){
-        int leftX = obstacleBoi.getX() - obstacleBoi.getXSize()/2;
-        int rightX = obstacleBoi.getX() + obstacleBoi.getXSize()/2;
-        int topY = obstacleBoi.getY() - obstacleBoi.getXSize()/2;
-        int bottomY = obstacleBoi.getY() + obstacleBoi.getXSize()/2;
-        int i = 0;
+        if(obstacleBoi != null) {
+            int leftX = obstacleBoi.getX() - obstacleBoi.getXSize() / 2;
+            int rightX = obstacleBoi.getX() + obstacleBoi.getXSize() / 2;
+            int topY = obstacleBoi.getY() - obstacleBoi.getXSize() / 2;
+            int bottomY = obstacleBoi.getY() + obstacleBoi.getXSize() / 2;
+            int i = 0;
 
-        if(this.x >= leftX && this.x <= rightX && this.y >= topY && this.y <= bottomY){
-            this.hp -= obstacleBoi.getAtk();
-            i++;
+            if (this.x >= leftX && this.x <= rightX && this.y >= topY && this.y <= bottomY) {
+                this.hp = 0;
+                i++;
+            }
         }
 
+    }
+
+
+    public boolean checkDeath(){
+        if (this.hp <= 0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
            
     //GETTERS/SETTERS

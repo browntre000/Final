@@ -24,7 +24,7 @@ public class GameBoardBoi extends SpriteBoi {
         y = new int[15*levels][5];
         for(int i = 0; i < gameBoard.length; i++){
             for(int j = 0; j < gameBoard[0].length; j++){
-                gameBoard[i][j] = new ObstacleBoi(gameBoi,boardBoi,j*(600/5)+(600/10), -i*600-50, random.nextInt(1000) + 500);
+                gameBoard[i][j] = new ObstacleBoi(gameBoi,boardBoi,j*(600/5)+(600/10), -i*600-50, random.nextInt(8000) + 3000);
                 x[i][j] = gameBoard[i][j].getX();
                 y[i][j] = gameBoard[i][j].getY();
             }
@@ -77,22 +77,27 @@ public class GameBoardBoi extends SpriteBoi {
     }
 
     public void checkDeaths(){
-        for(ObstacleBoi[] ob: gameBoard){
-            for(ObstacleBoi ob2: ob){
-                if (ob2 != null) {
-                    if(ob2.getHp()<=0){
-                        ob2 = null;
+        for(int i = 0; i < gameBoard.length; i++){
+            for(int j = 0; j < gameBoard[0].length; j++){
+                if (gameBoard[i][j] != null) {
+                    if(gameBoard[i][j].isDead()){
+                        gameBoard[i][j] = null;
                     }
                 }
             }
         }
     }
 
+
+
+    //GETTERS/SETTERS
+
     public ObstacleBoi getObstacleBoi(int x, int y){
         return gameBoard[x][y];
     }
-
-    //GETTERS/SETTERS
+    public void setObstacleBoi(int x, int y, ObstacleBoi boi){
+        this.gameBoard[x][y] = boi;
+    }
 
     public int[][] getX() {
         return this.x;

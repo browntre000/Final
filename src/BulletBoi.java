@@ -48,10 +48,26 @@ public class BulletBoi extends SpriteBoi {
 
         x+=xANGLE;
         y-=yANGLE;
+
+        checkBounds();
+
     }
 
     public void move(int x, int y){
 
+    }
+
+    public void checkBounds(){
+        int leftX = 0;
+        int rightX = boardBoi.getWidth();
+        int topY = 0;
+        int bottomY = boardBoi.getHeight();
+        int i = 0;
+
+        if (this.x <= leftX || this.x >= rightX || this.y <= topY || this.y >= bottomY) {
+            this.atk = 0;
+
+        }
     }
 
     public boolean collideWithObstacle(ObstacleBoi obstacleBoi){

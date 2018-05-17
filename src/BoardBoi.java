@@ -31,10 +31,12 @@ public class BoardBoi extends JPanel implements ActionListener {
     //IMPLEMENTED METHODS
     @Override
     public void actionPerformed(ActionEvent e){
-        playerBoi.move();
-        for(int i = 0; i < gameBoardBoi.getLevels() * 15; i++){
-            for(int j = 0; j < 5; j++){
-                playerBoi.collideWithObstacle(gameBoardBoi.getObstacleBoi(i,j));
+        if(playerBoi != null) {
+            playerBoi.move();
+            for (int i = 0; i < gameBoardBoi.getLevels() * 15; i++) {
+                for (int j = 0; j < 5; j++) {
+                    playerBoi.collideWithObstacle(gameBoardBoi.getObstacleBoi(i, j));
+                }
             }
         }
         gameBoardBoi.move();
@@ -45,10 +47,24 @@ public class BoardBoi extends JPanel implements ActionListener {
 
     //METHODS
     public void paintComponent(Graphics g){
-        super.paintComponent(g);
-        gameBoardBoi.paint(g);
-        playerBoi.paint(g);
-        paintingCriticallyImportantStrings(g);
+        if(playerBoi != null) {
+            if (!playerBoi.checkDeath()) {
+                super.paintComponent(g);
+                gameBoardBoi.paint(g);
+                playerBoi.paint(g);
+                paintingCriticallyImportantStrings(g);
+            } else {
+                for (int i = 0; i < gameBoardBoi.getLevels(); i++) {
+                    for (int j = 0; j < 5; j++) {
+                        gameBoardBoi.setObstacleBoi(i, j, null);
+                        g.clearRect(0, 0, this.getWidth(), this.getHeight());
+                        g.setColor(Color.GRAY);
+                        g.fillRect(0, 0, this.getWidth(), this.getHeight());
+                    }
+                }
+                printSimpleString("YOU LOST", 200, this.getWidth() / 2 - 100, this.getHeight() / 2, g);
+            }
+        }
     }
 
     private void printSimpleString(String s, int width, int XPos, int YPos, Graphics g2d){
@@ -64,6 +80,7 @@ public class BoardBoi extends JPanel implements ActionListener {
         int[][] y = gameBoardBoi.getY();
         for(int i = 0; i < gameBoardBoi.getLevels() * 15; i++){
             for(int j = 0; j < 5; j++){
+                if(gameBoardBoi.getObstacleBoi(i,j) != null)
                 printSimpleString(Integer.toString(gameBoardBoi.getObstacleBoi(i,j).getHp()), 125,
                         gameBoardBoi.getObstacleBoi(i, j).getX() - 60,
                         gameBoardBoi.getObstacleBoi(i, j).getY() + 8, g);
