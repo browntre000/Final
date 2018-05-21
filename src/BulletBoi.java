@@ -3,15 +3,15 @@ import java.awt.*;
 public class BulletBoi extends SpriteBoi {
   
     //OBJECTS
-    GameBoi gameBoi;
-    BoardBoi boardBoi;
-    GameBoardBoi gameBoardBoi;
+    private GameBoi gameBoi;
+    private BoardBoi boardBoi;
+    private GameBoardBoi gameBoardBoi;
 
     //VARIABLES
-    String colour, element;
-    Color color;
-    int x, y, xSize;
-    int atk, spd, def, luck;
+    private String colour, element;
+    private Color color;
+    private int x, y, xSize;
+    private int atk, spd, def, luck;
   
     //CONSTRUCTOR
     public BulletBoi(GameBoi gameBoi, BoardBoi boardBoi, PlayerBoi playerBoi, GameBoardBoi gameBoardBoi){

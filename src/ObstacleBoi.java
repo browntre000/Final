@@ -3,19 +3,21 @@ import javafx.scene.shape.Circle;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class ObstacleBoi extends SpriteBoi {
   
     //OBJECTS
-    List<BulletBoi> bullets;
-    GameBoi gameBoi;
-    BoardBoi boardBoi;
+    private List<BulletBoi> bullets;
+    private GameBoi gameBoi;
+    private BoardBoi boardBoi;
+    private Random random = new Random();
 
     //VARIABLES
-    int x, y, xSize;
-    String color, element;
-    int def, atk, hp;
-    boolean isCopyable;
+    private int x, y, xSize;
+    private String color, element;
+    private int def, atk, hp;
+    private boolean isCopyable;
 
     //CONSTRUCTOR
     public ObstacleBoi(GameBoi gb, BoardBoi bb, int x, int y, int hp){

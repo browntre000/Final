@@ -3,11 +3,11 @@ import java.util.Random;
 
 public class SpriteBoi {
     //OBJECTS
-    Random random = new Random();
+    private Random random = new Random();
 
     //VARIABLES
-    int elementType;
-    String color, element;
+    private int elementType;
+    private String color, element;
 
     //CONSTRUCTOR
     public SpriteBoi(){

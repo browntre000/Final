@@ -156,7 +156,7 @@ public class PlayerBoi extends SpriteBoi {
             bullets.get(i).move(90);
             gameBoardBoi.collideWithBullet(bullets.get(i));
             if(bullets.get(i).checkBounds())
-                bullets.remove(i); 
+                bullets.remove(i);
         }
     }
 
@@ -166,7 +166,6 @@ public class PlayerBoi extends SpriteBoi {
             int rightX = obstacleBoi.getX() + obstacleBoi.getXSize() / 2;
             int topY = obstacleBoi.getY() - obstacleBoi.getXSize() / 2;
             int bottomY = obstacleBoi.getY() + obstacleBoi.getXSize() / 2;
-            int i = 0;
 
             if (this.realX >= leftX && this.realX <= rightX && this.realY >= topY && this.realY <= bottomY) {
                 if(obstacleBoi.isCopyable() && obstacleBoi.getHp() <= 0){
@@ -178,8 +177,6 @@ public class PlayerBoi extends SpriteBoi {
                 }
                 else {
                     this.hp = 0;
-                    i++;
-
                 }
             }
         }

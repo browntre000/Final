@@ -4,27 +4,27 @@ import java.util.Random;
 public class GameBoardBoi extends SpriteBoi {
 
     //OBJECTS
-    ObstacleBoi[][] gameBoard;
-    int[][] x;
-    int[][] y;
-    GameBoi gameBoi;
-    BoardBoi boardBoi;
-    Random rand;
+    private ObstacleBoi[][] gameBoard;
+    private int[][] x;
+    private int[][] y;
+    private GameBoi gameBoi;
+    private BoardBoi boardBoi;
+    private Random rand = new Random();
 
     //VARIABLES
-    int levels;
+    private int levels;
 
     //CONSTRUCTOR
     public GameBoardBoi(GameBoi gb, BoardBoi bb ){
         this.gameBoi = gb;
         this.boardBoi = bb;
-        this.levels = random.nextInt(15) + 15;
+        this.levels = rand.nextInt(15) + 15;
         gameBoard = new ObstacleBoi[15*levels][5];
         x = new int[15*levels][5];
         y = new int[15*levels][5];
         for(int i = 0; i < gameBoard.length; i++){
             for(int j = 0; j < gameBoard[0].length; j++){
-                gameBoard[i][j] = new ObstacleBoi(gameBoi,boardBoi,j*(600/5)+(600/10), -i*600-50, random.nextInt(8000) + 3000);
+                gameBoard[i][j] = new ObstacleBoi(gameBoi,boardBoi,j*(600/5)+(600/10), -i*600-50, rand.nextInt(8000) + 3000);
                 x[i][j] = gameBoard[i][j].getX();
                 y[i][j] = gameBoard[i][j].getY();
             }
