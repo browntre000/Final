@@ -6,15 +6,16 @@ import java.util.List;
 public class PlayerBoi extends SpriteBoi {
 
     //OBJECTS
-    GameBoi gameBoi;
-    BoardBoi boardBoi;
-    List<BulletBoi> bullets;
-    GameBoardBoi gameBoardBoi;
+    private GameBoi gameBoi;
+    private BoardBoi boardBoi;
+    private List<BulletBoi> bullets;
+    private GameBoardBoi gameBoardBoi;
     
     //VARIABLES
-    String color, element;
-    int x, y, xSize;
-    int hp, atk, spd, def, luck;
+    private String color, element;
+    private int x, y, xSize;
+    private int realX, realY;
+    private int hp, atk, spd, def, luck;
 
     //CONSTRUCTOR
     public PlayerBoi(GameBoi gameBoi, BoardBoi boardBoi, GameBoardBoi gameBoardBoi){
@@ -25,14 +26,16 @@ public class PlayerBoi extends SpriteBoi {
         this.x = 275;
         this.y = 700;
         this.xSize = 50;
+        this.realX = x + xSize/2;
+        this.realY = y + xSize/2;
         this.gameBoi = gameBoi;
         this.boardBoi = boardBoi;
         this.gameBoardBoi = gameBoardBoi;
-        setupStats();
+        setupStats(this.element);
     }
 
     //METHODS
-    public void setupStats(){
+    public void setupStats(String element){
         if(element.equals("spark")){
             this.hp = 50;
             this.atk = 12;
@@ -93,7 +96,7 @@ public class PlayerBoi extends SpriteBoi {
 
 
     public void paint(Graphics g){
-        g.setColor(super.setColor());
+        g.setColor(super.returnColor());
         g.fillRect(x, y, xSize, xSize);
         for(BulletBoi b: bullets){
             b.paint(g);
@@ -104,44 +107,56 @@ public class PlayerBoi extends SpriteBoi {
         if(element.equals("flier")){
             if(gameBoi.isUpPressed()){
                 y -= this.spd;
+                realY -= this.spd;
             }
             if(gameBoi.isDownPressed()){
                 y += this.spd;
+                realY += this.spd;
             }
             if(gameBoi.isLeftPressed()){
                 x-= this.spd;
+                realX -= this.spd;
             }
             if(gameBoi.isRightPressed()){
                 x += this.spd;
+                realX += this.spd;
             }
         }
         else{
             if(gameBoi.isLeftPressed()){
                 x-= this.spd;
+                realX -= this.spd;
             }
             if(gameBoi.isRightPressed()){
                 x += this.spd;
+                realX += this.spd;
             }
         }
         if(x <= -xSize/2 && gameBoi.isLeftPressed()){
             x = boardBoi.getWidth();
+            realX = x + xSize/2;
         }
         if(x >= boardBoi.getWidth() && gameBoi.rightPressed){
             x = -xSize/2;
+            realX = x + xSize/2;
         }
         if(y >= boardBoi.getHeight() - xSize){
             y = boardBoi.getHeight() - xSize;
+            realY = y + xSize/2;
         }
         if(y <= 0){
             y = 0;
+            realY = y + xSize/2;
         }
 
         if(gameBoi.isSpacePressed()){
             bullets.add(new BulletBoi(gameBoi, boardBoi, this, gameBoardBoi));
         }
-        for(BulletBoi b: bullets){
-            b.move(90);
-            gameBoardBoi.collideWithBullet(b);
+        for(int i = 0; i < bullets.size(); i++){
+            bullets.get(i).move(90);
+            gameBoardBoi.collideWithBullet(bullets.get(i));
+            if(bullets.get(i).checkBounds())
+                bullets.remove(i); 
         }
     }
 
@@ -153,9 +168,19 @@ public class PlayerBoi extends SpriteBoi {
             int bottomY = obstacleBoi.getY() + obstacleBoi.getXSize() / 2;
             int i = 0;
 
-            if (this.x >= leftX && this.x <= rightX && this.y >= topY && this.y <= bottomY) {
-                this.hp = 0;
-                i++;
+            if (this.realX >= leftX && this.realX <= rightX && this.realY >= topY && this.realY <= bottomY) {
+                if(obstacleBoi.isCopyable() && obstacleBoi.getHp() <= 0){
+                    this.element = obstacleBoi.getElement();
+                    this.setElement(obstacleBoi.getElement());
+                    this.color = super.getColor();
+                    this.elementType = super.getElementType();
+                    this.setupStats(this.element);
+                }
+                else {
+                    this.hp = 0;
+                    i++;
+
+                }
             }
         }
 

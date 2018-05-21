@@ -27,7 +27,7 @@ public class BulletBoi extends SpriteBoi {
         this.x = playerBoi.getX() + 25;
         this.y = playerBoi.getY() + 25;
         this.xSize = 20;
-        this.color = playerBoi.setColor();
+        this.color = playerBoi.returnColor();
         this.element = playerBoi.getElement();
         this.atk = playerBoi.getAtk();
         this.spd = playerBoi.getSpd();
@@ -57,7 +57,7 @@ public class BulletBoi extends SpriteBoi {
 
     }
 
-    public void checkBounds(){
+    public boolean checkBounds(){
         int leftX = 0;
         int rightX = boardBoi.getWidth();
         int topY = 0;
@@ -66,7 +66,10 @@ public class BulletBoi extends SpriteBoi {
 
         if (this.x <= leftX || this.x >= rightX || this.y <= topY || this.y >= bottomY) {
             this.atk = 0;
-
+            return true;
+        }
+        else{
+            return false;
         }
     }
 

@@ -86,7 +86,7 @@ public class SpriteBoi {
             this.elementType = 7;
         }
     }
-    public Color setColor(){
+    public Color returnColor(){
         if(color.equals("red")){
             return Color.red;
         }

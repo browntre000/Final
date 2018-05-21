@@ -18,7 +18,7 @@ public class GameBoardBoi extends SpriteBoi {
     public GameBoardBoi(GameBoi gb, BoardBoi bb ){
         this.gameBoi = gb;
         this.boardBoi = bb;
-        this.levels = random.nextInt(15);
+        this.levels = random.nextInt(15) + 15;
         gameBoard = new ObstacleBoi[15*levels][5];
         x = new int[15*levels][5];
         y = new int[15*levels][5];
@@ -69,7 +69,7 @@ public class GameBoardBoi extends SpriteBoi {
             for(int j = 0; j < gameBoard[0].length; j++){
                 if (gameBoard[i][j] != null) {
                     if(gameBoard[i][j].collideWithPlayer(playerBoi)){
-                        gameBoard[i][j] = new ObstacleBoi(gameBoi, boardBoi, 10000, 10000 , 10000);
+                        gameBoard[i][j] = null;
                     }
                 }
             }

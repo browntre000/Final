@@ -10,7 +10,6 @@ public class ObstacleBoi extends SpriteBoi {
     List<BulletBoi> bullets;
     GameBoi gameBoi;
     BoardBoi boardBoi;
-    PlayerBoi playerBoi;
 
     //VARIABLES
     int x, y, xSize;
@@ -36,7 +35,7 @@ public class ObstacleBoi extends SpriteBoi {
 
     //METHODS
     public void paint(Graphics g){
-        g.setColor(setColor());
+        g.setColor(returnColor());
         if(isCopyable){
             g.fillOval(x - xSize/2 , y - xSize/2, xSize, xSize);
         }
@@ -59,6 +58,10 @@ public class ObstacleBoi extends SpriteBoi {
         if(bb.getX() >= leftX && bb.getX() <= rightX && bb.getY() >= topY && bb.getY() <= bottomY){
             this.hp -= bb.getAtk();
         }
+        if(isCopyable){
+            if(this.hp <= 0)
+                this.hp = 0;
+        }
     }
 
     public boolean collideWithPlayer(PlayerBoi playerBoi){
@@ -76,7 +79,11 @@ public class ObstacleBoi extends SpriteBoi {
     }
 
     public boolean isDead(){
-        if(this.hp <= 0){
+        if(this.hp <= 0 && this.isCopyable){
+            this.xSize = 100;
+            return false;
+        }
+        else if(this.hp <= 0){
             return true;
         }
         else{
@@ -104,5 +111,8 @@ public class ObstacleBoi extends SpriteBoi {
 
     public int getAtk(){
         return this.atk;
+    }
+    public boolean isCopyable(){
+        return isCopyable;
     }
 }
