@@ -43,11 +43,11 @@ public class GameBoardBoi extends SpriteBoi {
         }
     }
 
-    public void move(){
+    public void move(PlayerBoi playerBoi){
         for(ObstacleBoi[] ob: gameBoard){
             for(ObstacleBoi ob2: ob){
                 if (ob2 != null) {
-                    ob2.move();
+                    ob2.move(playerBoi);
                 }
             }
         }

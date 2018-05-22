@@ -40,6 +40,11 @@ public class ObstacleBoi extends SpriteBoi {
         g.setColor(returnColor());
         if(isCopyable){
             g.fillOval(x - xSize/2 , y - xSize/2, xSize, xSize);
+            for(BulletBoi bb: bullets){
+                if(bb != null) {
+                    bb.paint(g);
+                }
+            }
         }
         else{
             g.fillRect(x - xSize/2 , y - xSize/2, xSize, xSize);
@@ -47,7 +52,7 @@ public class ObstacleBoi extends SpriteBoi {
     }
 
 
-    public void move(){
+    public void move(PlayerBoi playerBoi){
         y += 5;
     }
 
@@ -58,7 +63,57 @@ public class ObstacleBoi extends SpriteBoi {
         int bottomY = this.getY() + this.getXSize()/2;
 
         if(bb.getX() >= leftX && bb.getX() <= rightX && bb.getY() >= topY && bb.getY() <= bottomY){
-            this.hp -= bb.getAtk();
+            if(this.element.equals("spark") && bb.getElement().equals("water")){
+                this.hp -= (int) (0.1 * bb.getAtk());
+            }
+            else if(this.element.equals("water") && bb.getElement().equals("fire")){
+                this.hp -= (int) (0.1 * bb.getAtk());
+            }
+            else if(this.element.equals("fire") && bb.getElement().equals("ice")){
+                this.hp -= (int) (0.1 * bb.getAtk());
+            }
+            else if(this.element.equals("ice") && bb.getElement().equals("spark")){
+                this.hp -= (int) (0.1 * bb.getAtk());
+            }
+            else if(this.element.equals("speedy") && bb.getElement().equals("sturdy")){
+                this.hp -= (int) (0.1 * bb.getAtk());
+            }
+            else if(this.element.equals("sturdy") && bb.getElement().equals("archer")){
+                this.hp -= (int) (0.1 * bb.getAtk());
+            }
+            else if(this.element.equals("archer") && bb.getElement().equals("flier")){
+                this.hp -= (int) (0.1 * bb.getAtk());
+            }
+            else if(this.element.equals("flier") && bb.getElement().equals("speedy")){
+                this.hp -= (int) (0.1 * bb.getAtk());
+            }
+            else if(this.element.equals("water") && bb.getElement().equals("spark")){
+                this.hp -= (int) (1.2 * bb.getAtk());
+            }
+            else if(this.element.equals("fire") && bb.getElement().equals("water")){
+                this.hp -= (int) (1.2 * bb.getAtk());
+            }
+            else if(this.element.equals("ice") && bb.getElement().equals("fire")){
+                this.hp -= (int) (1.2 * bb.getAtk());
+            }
+            else if(this.element.equals("spark") && bb.getElement().equals("ice")){
+                this.hp -= (int) (1.2 * bb.getAtk());
+            }
+            else if(this.element.equals("sturdy") && bb.getElement().equals("speedy")){
+                this.hp -= (int) (1.2 * bb.getAtk());
+            }
+            else if(this.element.equals("archer") && bb.getElement().equals("sturdy")){
+                this.hp -= (int) (1.2 * bb.getAtk());
+            }
+            else if(this.element.equals("flier") && bb.getElement().equals("archer")){
+                this.hp -= (int) (1.2 * bb.getAtk());
+            }
+            else if(this.element.equals("speedy") && bb.getElement().equals("flier")){
+                this.hp -= (int) (1.2 * bb.getAtk());
+            }
+            else{
+                this.hp -= bb.getAtk();
+            }
         }
         if(isCopyable){
             if(this.hp <= 0)
@@ -92,6 +147,7 @@ public class ObstacleBoi extends SpriteBoi {
             return false;
         }
     }
+
 
     //GETTERS/SETTERS
 

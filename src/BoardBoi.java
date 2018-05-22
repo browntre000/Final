@@ -39,7 +39,7 @@ public class BoardBoi extends JPanel implements ActionListener {
                 }
             }
         }
-        gameBoardBoi.move();
+        gameBoardBoi.move(playerBoi);
         gameBoardBoi.checkDeaths();
         repaint();
     }

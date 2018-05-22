@@ -153,6 +153,22 @@ public class PlayerBoi extends SpriteBoi {
             bullets.add(new BulletBoi(gameBoi, boardBoi, this, gameBoardBoi));
         }
         for(int i = 0; i < bullets.size(); i++){
+            if(this.element.equals("archer")){
+                switch(i % 3){
+                    case 0: {
+                        bullets.get(i).move(90);
+                        break;
+                    }
+                    case 1: {
+                        bullets.get(i).move(60);
+                        break;
+                    }
+                    case 2:{
+                        bullets.get(i).move(120);
+                        break;
+                    }
+                }
+            }
             bullets.get(i).move(90);
             gameBoardBoi.collideWithBullet(bullets.get(i));
             if(bullets.get(i).checkBounds())
@@ -172,7 +188,6 @@ public class PlayerBoi extends SpriteBoi {
                     this.element = obstacleBoi.getElement();
                     this.setElement(obstacleBoi.getElement());
                     this.color = super.getColor();
-                    this.elementType = super.getElementType();
                     this.setupStats(this.element);
                 }
                 else {

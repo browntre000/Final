@@ -21,6 +21,14 @@ public class BulletBoi extends SpriteBoi {
         this.gameBoardBoi = gameBoardBoi;
         setupStats(playerBoi);
     }
+
+    public BulletBoi(GameBoi gameBoi, BoardBoi boardBoi, ObstacleBoi obstacleBoi){
+        super();
+        this.gameBoi = gameBoi;
+        this.boardBoi = boardBoi;
+        this.x = obstacleBoi.getX();
+        this.y = obstacleBoi.getY();
+    }
   
     //METHODS
     public void setupStats(PlayerBoi playerBoi){
@@ -54,7 +62,12 @@ public class BulletBoi extends SpriteBoi {
     }
 
     public void move(int x, int y){
+        int deltaX = this.x - x;
+        int deltaY = this.y - y;
 
+        this.x += (deltaX/10);
+        this.y += (deltaY/10);
+        checkBounds();
     }
 
     public boolean checkBounds(){
@@ -122,4 +135,8 @@ public class BulletBoi extends SpriteBoi {
         return def;
     }
 
+    @Override
+    public String getElement() {
+        return element;
+    }
 }
