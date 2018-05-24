@@ -1,13 +1,23 @@
+import java.util.List;
+
 public class BossBoi extends SpriteBoi {
   
-  //OBJECTS
+    //OBJECTS
+    private GameBoi gameBoi;
+    private BoardBoi boardBoi;
+    private GameBoardBoi gameBoardBoi;
+    private List<BulletBoi> bullets;
 
-  //VARIABLES
+     //VARIABLE
+     private String color, element;
+     private int x, y, xSize;
+     private int realX, realY;
+     private int hp, atk, spd, def, luck;
   
-  //CONSTRUCTOR
+     //CONSTRUCTOR
   
-  //METHODS
+     //METHODS
   
-  //GETTERS/SETTERS
+     //GETTERS/SETTERS
   
 }

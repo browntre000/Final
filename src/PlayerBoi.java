@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class PlayerBoi extends SpriteBoi {
 
@@ -10,6 +11,7 @@ public class PlayerBoi extends SpriteBoi {
     private BoardBoi boardBoi;
     private List<BulletBoi> bullets;
     private GameBoardBoi gameBoardBoi;
+    private Random random = new Random();
     
     //VARIABLES
     private String color, element;
@@ -132,11 +134,11 @@ public class PlayerBoi extends SpriteBoi {
                 realX += this.spd;
             }
         }
-        if(x <= -xSize/2 && gameBoi.isLeftPressed()){
+        if(x <= 0 && gameBoi.isLeftPressed()){
             x = boardBoi.getWidth();
             realX = x + xSize/2;
         }
-        if(x >= boardBoi.getWidth() && gameBoi.rightPressed){
+        if(x-xSize >= boardBoi.getWidth() && gameBoi.rightPressed){
             x = -xSize/2;
             realX = x + xSize/2;
         }
@@ -151,24 +153,9 @@ public class PlayerBoi extends SpriteBoi {
 
         if(gameBoi.isSpacePressed()){
             bullets.add(new BulletBoi(gameBoi, boardBoi, this, gameBoardBoi));
+            bullets.add(new BulletBoi(gameBoi, boardBoi, this, gameBoardBoi));
         }
         for(int i = 0; i < bullets.size(); i++){
-            if(this.element.equals("archer")){
-                switch(i % 3){
-                    case 0: {
-                        bullets.get(i).move(90);
-                        break;
-                    }
-                    case 1: {
-                        bullets.get(i).move(60);
-                        break;
-                    }
-                    case 2:{
-                        bullets.get(i).move(120);
-                        break;
-                    }
-                }
-            }
             bullets.get(i).move(90);
             gameBoardBoi.collideWithBullet(bullets.get(i));
             if(bullets.get(i).checkBounds())
@@ -188,6 +175,9 @@ public class PlayerBoi extends SpriteBoi {
                     this.element = obstacleBoi.getElement();
                     this.setElement(obstacleBoi.getElement());
                     this.color = super.getColor();
+                    if(this.element.equals("speedy")){
+                        super.setColor("orange");
+                    }
                     this.setupStats(this.element);
                 }
                 else {
